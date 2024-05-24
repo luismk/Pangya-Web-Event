@@ -1,0 +1,185 @@
+<?php
+    // Arquivo design.inc
+    // Criado em 28/06/2020 as 14:36 por Acrisio
+    // Definição e Implementação da classe Static Design
+
+    include_once('player_singleton.inc');
+    include_once('config.inc');
+    include_once('debug_log.inc');
+
+    // tem que ser sem o https, só a pagina gacha_whats.php, por que se colocar o http o link todo ele reseta a session
+    const LINKS = [
+        'LOGIN_ERROR' => BASE_EVENT_URL . 'unknown_error.html',
+        'UNKNOWN_ERROR' => BASE_EVENT_URL . 'unknown_error.html'
+    ];
+
+    class Design {
+
+        static public function checkIE() {
+
+        }
+
+        static public function checkLogin() {
+ 
+        }
+
+        static public function beginHTML() {
+        echo '<!DOCTYPE html>';
+        echo '<html lang="pt-br">';
+        echo '<head>';
+        echo '<meta charset="UTF-8">';
+        echo '<title>PangYa Hole Event</title>';
+        echo '<meta http-equiv="X-UA-Compatible" content="IE=edge">';
+    }
+
+        static public function endHTML() {
+
+            // Verifica se está com navegador correto(acessando pelo ProjectG)
+            self::checkIE();
+
+            // Verifica se o player esta conectado
+            self::checkLogin();
+ echo '</body>';
+        echo '</html>';
+        }
+
+        static public function beginHead() {
+
+            // Verifica se está com navegador correto(acessando pelo ProjectG)
+            self::checkIE();
+
+            // Verifica se o player esta conectado
+            self::checkLogin();
+
+            echo '<head>';
+
+            echo '<meta content="IE=7.0000" http-equiv="X-UA-Compatible">';
+            echo '<meta charset="UTF-8">';
+            echo '<title>PangYa World Tour Event</title>';
+            echo '<meta http-equiv="X-UA-Compatible" content="IE=edge">';
+            echo '<!-- Vendor CSS -->';
+            echo '<link href="./include/bootstrap.css" rel="stylesheet">';
+            echo '<link href="./include/simple-line-icons.css" rel="stylesheet">';
+            echo '<link href="./include/magnific-popup.css" rel="stylesheet">';
+            echo '<link href="./include/slick.css" rel="stylesheet">';
+            echo '<!-- REVEAL ADD-ON FILES -->';
+            echo '<link rel="stylesheet" href="./include/revolution.addon.revealer.css" type="text/css" media="all">';
+            echo '<link rel="stylesheet" href="./include/revolution.addon.revealer.preloaders.css" type="text/css" media="all">';
+            echo '<link rel="stylesheet" href="./include/typewriter.css" type="text/css" media="all">';
+            echo '<!-- Template CSS-->';
+            echo '<link href="./include/style-esports.css" rel="stylesheet">';
+            echo '<style>';
+            echo 'body, html {';
+            echo 'margin: 0;';
+            echo 'padding: 0;';
+            echo 'height: 100%;';
+            echo 'width: 100%;';
+            echo 'display: flex;';
+            echo 'justify-content: center;';
+            echo 'align-items: center;';
+            echo 'background: #000;';
+            echo '}';
+            echo '.background-container {';
+            echo 'position: absolute;';
+            echo 'top: 0;';
+            echo 'right: 160px;';
+            echo 'height: 100%;';
+            echo 'width: 100%;';
+            echo '}';
+            echo '.background-container img {';
+            echo 'position: absolute;';
+            echo '}';
+            echo '.img1 { top: 3px; left: 534px; }';
+            echo '.img2 { top: 3px; left: 790px; }';
+            echo '.img3 { top: 259px; left: 534px; }';
+            echo '.img4 { top: 3px; left: 1046px; }';
+            echo '.img5 { top: 259px; left: 790px; }';
+            echo '.img6 { top: 259px; left: 1046px; }';
+            echo '.img7 { top: 515px; left: 868px; }';
+            echo '.img8 { top: 515px; left: 534px; }';
+            echo '.img9 { top: 515px; left: 790px; }';
+            echo '.img_close { top: 3px; left: 1276px; }';
+            echo '.img_info { top: 466px; left: 1010px; }';
+            echo '.img_gift { top: 407px; left: 554px; }';
+            echo '.image_progress {';
+            echo 'top: 267px;';
+            echo 'left: 621px;';
+            echo 'overflow: hidden;';
+            echo 'width: 0px;';
+            echo 'height: 9px;';
+            echo '}';
+            echo '.img { max-width: 100%; }';
+            echo '.button {';
+            echo 'position: absolute;';
+            echo 'padding: 10px 20px;';
+            echo 'background-color: #f00;';
+            echo 'color: #fff;';
+            echo 'border: none;';
+            echo 'cursor: pointer;';
+            echo 'display: none}';
+            echo '</style>';
+            echo '</head>';
+        }
+
+        static public function endHead() {
+
+            // Verifica se está com navegador correto(acessando pelo ProjectG)
+            self::checkIE();
+
+            // Verifica se o player esta conectado
+            self::checkLogin();
+
+            echo '</head>';
+        }
+
+        static public function beginBody() {
+
+            // Verifica se está com navegador correto(acessando pelo ProjectG)
+            self::checkIE();
+
+            // Verifica se o player esta conectado
+            self::checkLogin();
+
+            echo '<body style="background-color:#FFFFFF;">';
+            echo '<div class="background-container">';
+        }
+
+        static public function endBody() {
+
+            // Verifica se está com navegador correto(acessando pelo ProjectG)
+            self::checkIE();
+
+            // Verifica se o player esta conectado
+            self::checkLogin();
+             echo '</div>';
+            echo '<div id="modal" class="modal">';
+            echo '<div class="modal-content">';
+            echo '<span class="close">&times;</span>';
+            echo '<!-- Botão de fechar -->';
+            echo '<div class="modal-message">';
+            echo 'The item will be sent to your email.';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+            echo '</body>';
+        }
+
+        static public function beginContent() {
+
+            // Verifica se está com navegador correto(acessando pelo ProjectG)
+            self::checkIE();
+
+            // Verifica se o player esta conectado
+            self::checkLogin();
+        }
+
+        static public function endContent() {
+
+            // Verifica se está com navegador correto(acessando pelo ProjectG)
+            self::checkIE();
+
+            // Verifica se o player esta conectado
+            self::checkLogin();
+        }
+    } 
+?>

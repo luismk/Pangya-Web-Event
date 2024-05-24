@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>PangYa World Tour Event</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <!-- Vendor CSS -->
+    <link href="./include/bootstrap.css" rel="stylesheet">
+    <link href="./include/simple-line-icons.css" rel="stylesheet">
+    <link href="./include/magnific-popup.css" rel="stylesheet">
+    <link href="./include/slick.css" rel="stylesheet">
+    <!-- REVEAL ADD-ON FILES -->
+    <link rel="stylesheet" href="./include/revolution.addon.revealer.css" type="text/css" media="all">
+    <link rel="stylesheet" href="./include/revolution.addon.revealer.preloaders.css" type="text/css" media="all">
+    <link rel="stylesheet" href="./include/typewriter.css" type="text/css" media="all">
+    <!-- Template CSS-->
+    <style>
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: 17px;
+            margin-left: 524px;
+            margin-top: 187px;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+        }
+
+        .background-container {
+            position: absolute;
+            top: 0;
+            right: 160px;
+            height: 100%;
+            width: 100%;
+        }
+
+        .background-container img {
+            position: absolute;
+        }
+
+        .img1 {
+            top: 3px;
+            left: 534px;
+            width: 600px;
+        }
+        .img_gift {
+            position: absolute;
+            top: 300px;
+            left: 700px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            margin: 15% auto;
+            transform: translateX(-50%);
+            border: 1px solid #888;
+            width: 22%;
+        }
+
+        .modal-message {
+            position: absolute;
+            bottom: 53px;
+            left: 0;
+            width: 100%;
+            background-image: url('./include/notice.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 20px;
+        }
+
+        .close {
+            color: #f90101;
+            position: absolute;
+            bottom: 86px;
+            left: 320px;
+            font-size: 28px;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="sky">
+    <div class="background-container">
+        <img class="img1" src="./include/bg_new.png" alt="Background Image">
+
+<div class="row">
+
+        <div class="col-md-4">
+
+            <!-- Stream #0 -->
+            <div class="twitch-stream-wrapper">
+                <a href="#" class="twitch-stream twitch-stream--featured twitch-stream--has-video card">
+                    <div class="twitch-stream__overlay twitch-stream__overlay--bg0 effect-duotone effect-duotone--base"></div>
+                    <div class="twitch-stream__body">
+                        <figure class="twitch-stream__img" style="flex-basis: 40px !important">
+                            <img src="./include/hole_in_one.png" alt="">
+                        </figure>
+                        <h5 class="twitch-stream__title">Fa&#231;a 10 Hole In One</h5>
+
+                            <div class="twitch-stream__status twitch-stream__status--scheduled progress__number" style="padding-top: 5px">
+                                &nbsp
+                            </div>
+                    </div>
+                </a>
+
+                <div class="twitch-stream-video card card--no-paddings">
+                    <div class="card__content  alc-tourn-card">
+
+                        <div class="alc-tourn-card__meta">
+                                <div class="alc-tourn-card__meta-item ">
+                                    <figure>
+                                        <a href="/PangyaItem/Index/436207618" target="_blank">
+                                            <img src="./include/item1_02.png" alt="" width="50">
+                                        </a>
+                                    </figure>
+                                    <div class="alc-tourn-card__meta-item-value">10</div>
+                                </div>
+                                <div class="alc-tourn-card__meta-item ">
+                                    <figure>
+                                        <a href="/PangyaItem/Index/335544369" target="_blank">
+                                            <img src="./include/ball_49.png" alt="" width="50">
+                                        </a>
+                                    </figure>
+                                    <div class="alc-tourn-card__meta-item-value">10</div>
+                                </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+            <!-- Stream #0 / End -->
+        </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-message">
+                The item will be sent to your email.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeImage(element, suffix) {
+            var src = element.src;
+            var index = src.lastIndexOf("_");
+            if (index !== -1) {
+                var newSrc = src.substring(0, index) + suffix + src.substring(src.lastIndexOf('.'));
+                element.src = newSrc;
+            }
+        }
+
+        function restoreImage(element, suffix) {
+            var src = element.src;
+            var index = src.lastIndexOf("_");
+            if (index !== -1) {
+                var newSrc = src.substring(0, index) + suffix + src.substring(src.lastIndexOf('.'));
+                element.src = newSrc;
+            }
+        }
+
+        function showModal() {
+            var modal = document.getElementById("modal");
+            var span = document.getElementsByClassName("close")[0];
+
+            modal.style.display = "block";
+
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
