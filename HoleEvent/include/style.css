@@ -1,0 +1,62 @@
+  * {
+                border: 0;
+                margin: 0;
+            }
+       
+        .img1 { top: 23px; height: 50%;left: 283px;position: absolute; }
+        .img2 { top: 23px; left: 538px;position: absolute; }
+        .img3 { top: 259px; left: 538px; position: absolute ;}
+        .img4 { top: 259px; left: 283px;position: absolute; }
+        .image_progress {
+           top: 304px;
+            left: 120px;
+            overflow: hidden;
+            width: 0px;
+            height: 10px;
+			position: absolute;
+        }
+
+        .textposition {
+    position: absolute;
+       top: 189.6px;
+    left: 95px;
+    overflow: hidden !important;
+    word-wrap: break-word;
+    color: #ffffff;
+			position: absolute;
+}
+
+        .textposition2 {
+            top: 128px;
+            left:588px;
+             color: #ff0000;
+            position: absolute;
+        }
+
+        .img { max-width: 100%; 			position: absolute;
+}
+
+        .button {
+    position: absolute;
+    padding: 10px 20px;
+  background-color: #f000;
+    color: #f000;
+    border: none;
+    cursor: pointer;			position: absolute;
+
+}
+
+      
+		 /* Adicionando a animação de brilho */
+        .brilho {
+            animation: brilho-animacao 1s infinite alternate;
+        }
+
+        @keyframes brilho-animacao {
+            0% {
+                filter: brightness(100%);
+            }
+            100% {
+                filter: brightness(150%);
+            }
+        }
