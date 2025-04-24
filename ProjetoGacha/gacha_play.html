@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+       <html lang="pt-br">
+       <head>
+       <meta charset="UTF-8">
+       <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>GACHA</title>
+  <style>
+   /* nao mexa nisso por favor, copie, porem não mexa nisso! */
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      font-style: normal;
+      font-weight: bold;
+    }
+
+   .container {
+    text-align: center; 
+    
+      width: 800px;
+      height: 553px;
+}
+
+   .painel-header-show-item {
+           text-align: center;
+    }
+
+    .painel-header-show-item .raro img {
+        position: absolute;
+    top: 35px;
+        display: none;
+            left: 9px;
+    }
+
+    .painel-header-show-item .normal img {
+        position: absolute;
+    top: 35px;
+    left:469px;
+        display: none;
+     }
+    
+    .painel-header-button {}
+
+    .painel-header-button button {
+      border: none;
+      background: none;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .painel-header-button button:hover {
+      transform: scale(1.05);
+    }
+
+    .painel-header-button .btnRaro:hover img {
+      content: url('./images/Buttons/btnShowItemR_o.png');
+    }
+
+    .painel-header-button .btnNormal:hover img {
+      content: url('./images/Buttons/btnShowItem_o.png');
+    }
+
+    .painel-header-button .btnBuy:hover img {
+      content: url('./images/Buttons/sBtnBuyCoin_o.png');
+    }
+
+    .coin-count {
+      color: #ff6a00;
+    }
+
+    .character, .golf-club {
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+      transform: translateX(-50%);
+    }
+  /* gacha_play.html (75, 17) */
+.painel-items {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    position: absolute;
+    top: -2px;
+    left: -4px;
+}
+
+
+/* gacha_play.html (83, 22) */
+.painel-items .item {
+     display: flex;
+    margin-right: -29px;
+    width: 65px;
+    height: 65px;
+    vertical-align: auto;
+ }
+
+
+.painel-items .item:last-child {
+    margin-right: 0; /* Remove o espaçamento do último item */
+}
+
+.painel-items .item img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+    .game {}
+
+    .game img {
+      position: absolute;
+    }
+/* gacha_play.html (113, 12) */
+img#click {
+    top: 255px;
+    left: 639px;
+    z-index: 999;
+}
+
+    img#caddie {
+      top: 340px;
+      left: 603px;
+      width: 166px;
+      z-index: 999;
+    }
+    
+img#get-img-left {
+    position: absolute;
+    top: -17px;
+    display: block;
+    left: 2px;
+    widows: ;
+    width: ;
+    width: 79px;
+}
+ 
+span#get-item-left {
+    position: absolute;
+    top: 42px;
+    display: block;
+    left: 14px;
+    font-size: 12px;
+}
+ 
+     img#comet {
+    top: 448px;
+      left: 646px;
+      z-index: 990;
+    } 
+img#power-bar {
+    top: 365px;
+    left: 1px;
+    z-index: 999;
+}
+
+ 
+/* Imagem com fundo específico */
+img#impact {
+  left: 103px;
+  top: 509px;
+         z-index: 1000;
+         display:none;
+}
+ 
+
+/* Imagem com fundo 341 */
+img#current-bar {
+  left: 163px;
+  top: 492px;
+         z-index: 1000;
+}
+
+/* Imagem com fundo 343 */
+img#scroll-bar {
+  left: 107px;
+  top: 489px;
+         z-index: 1000;
+}
+
+img#form_play {
+    position: absolute;
+    top: 0px;
+    right: 1px;
+}
+
+
+.game button {
+    margin-bottom: -210px;
+    margin-left: 492px;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+    @keyframes riseFromGround {
+      0% {
+        transform: translateY(100%) scale(0.5);
+        opacity: 0;
+      }
+      50% {
+        transform: translateY(0) scale(1.0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100%) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    #pangya-logo {
+      position: absolute;
+      animation: none;
+      animation-fill-mode: forwards;
+      z-index: 1000;
+    }
+     .coin-painel-container {
+    background: url) no-repeat center center;
+    text-align: center;
+    color: #333;
+}
+.coin-painel-container span {
+    top: 15px;
+    position: absolute;
+    left: 547px;
+    font-size: 22px;
+}
+ 
+.coin-painel-container-buttons {
+    position: ;
+    position: absolute;
+    top: ;
+    top: -319px;
+    left: ;
+    left: -372px;
+}
+
+
+        .coin-painel-container button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .coin-painel-container button:hover {
+            transform: scale(1.05);
+        }
+
+        .coin-painel-container .btn_buy_coin:hover img {
+            content: url('./images/Buttons/btnBuyCoin_o.png');
+        }
+.painel-shop
+{
+   left: 60px; top: 55px; position: absolute; z-index: 9999;
+}
+
+.test-itens-container {
+    display: flex;
+    flex-wrap: wrap;  /* Permite que os itens se ajustem automaticamente */
+    justify-content: space-around;  /* Alinha os itens no centro */
+    margin-top: 10px;
+} 
+.test-item {
+    width: 91px;
+    height: 91px;
+    margin: 5px;
+    background-size: cover;
+    border-radius: 5px; 
+    top: 55px; 
+    position: absolute; 
+    left: 15px; 
+    background-image: url('./images/Forms/background-item.png');
+} 
+
+  </style>
+</head>
+<body id="main">
+  <bgsound id="sound-bgm" loop="true">
+  <bgsound id="sound-click">
+  <bgsound id="sound-play">
+  <div class="container">
+        <img id="form_play" src="./images/Forms/form-main-play.png">
+     <div class="painel-header-button" id="id-container">
+      <button class="btnRaro" style="position: absolute; top: 10px; left: 219px;" onclick="ShowWinItem(1)">
+        <img src="./images/Buttons/btnShowItemR_n.png">
+      </button>
+      <button class="btnNormal" style="position: absolute; top: 10px; left: 453px;" onclick="ShowWinItem(0)">
+        <img src="./images/Buttons/btnShowItem_n.png">
+      </button>
+    </div>
+
+  <div class="painel-header-button" style="left: 685px; top: 22px; position: absolute;">
+      <span class="coin-count" style="font-style: normal; font-weight: bold; margin-left: -23px;">499</span>
+      <button class="btnBuy" style="top: -6px; position: absolute;" onclick="ShowPainelShop()">
+        <img alt="Golf Club" src="./images/Buttons/sBtnBuyCoin_n.png">
+      </button>
+    </div>
+    <div class="painel-header-show-item">
+    <div class="raro" id="painel-show-win-rare" style="display: none;">
+        <img id="painel-show-win-rare-img" src="./images/Forms/painel_raro.png" alt="Raro">
+        <!-- Local onde os itens raros serão exibidos -->
+        <div id="itens-raros" class="test-itens-container"></div>
+    </div>
+    <div class="normal" id="painel-show-win-normal" style="display: none;">
+        <img id="painel-show-win-normal-img" src="./images/Forms/painel_normal.png" alt="Normal">
+        <!-- Local onde os itens normais serão exibidos -->
+        <div id="itens-normais" class="test-itens-container"></div>
+    </div>
+</div>
+
+    <div class="game">
+      <img src="./images/pangya_logo.png" id="pangya-logo" style="top: 92px; left: 232px; display: none;">
+<img src="./images/play.png" id="lucia-move" style="top: 42px; left: -54px;z-index: 992;">
+         <img src="./images/click.gif" id="click">
+      <button onclick="SelectBall();" id="selectball">
+      <img src="./images/bogo.gif" id="caddie">
+      </button>
+      <img src="./images/Comets/1.png" id="comet">
+<img id="impact" src="./images/351.jpg">
+      <img src="./images/power_bar.png" id="power-bar">
+      <img id="current-bar" src="./images/341.jpg">
+<img id="current-bar-sub" style=" left: 163px;
+    top: 492px;
+    z-index: 1000;width: 0px; height: 9px;" src="./images/349.jpg">  
+<img id="scroll-bar" src="./images/343.jpg">
+<img id="impact-max" style="display:none;left: 484px; top: 469px;" src="./images/354.png">
+<img id="impact-pangya" style="left: 116px; top: 469px; display: none; z-index: 1000;" src="./images/356.png">
+
+</div>
+<div class="painel-shop" id="painel-shop" style="display: none">
+        <img src="./images/Forms/form-shop.png">
+         <button class="btn_buy_coin" style="background: none; border: 51px currentColor; border-image: none; left: 613px; top: 24px; width: 23px; height: 24px; position: absolute; cursor: pointer;" onclick="ShowPainelShop()">
+</button>
+ <div class="painel-shop" style="left: 195px;" id="painel-shop-confirm">
+        <img src="./images/Forms/form-shop-buy-final.png">
+<span class="coin-count" id="text-coin" style="left: 54px; top: 61px; color: white; font-size: 20px; font-style: normal; font-weight: bold; position: absolute;"></span>
+<button class="btn_buy_coin" style="background: none; border: 51px currentColor; border-image: none; left: 78px; top: 210px; position: absolute; cursor: pointer;" onclick="ShowPainelShopConfirm()">
+        <img src="./images/Buttons/btn_yes_n.png">
+</button>
+<span class="coin-count" id="coin-current-balance" style="left: 217px; top: 147px; text-align: left; color: white; font-style: normal; font-weight: bold; position: absolute;display: inline-block; /* Faz o elemento se comportar como um bloco em linha */
+    margin-left: -33px; /* Garante que o texto esteja alinhado à esquerda */ margin-right: -19px; /* Garante que o texto esteja alinhado à esquerda */">10000000</span>
+<span class="coin-count" id="coin-cost" style="left: 217px; top: 168px; text-align: right; color: white; font-style: normal; font-weight: bold; position: absolute;display: inline-block; /* Faz o elemento se comportar como um bloco em linha */
+    margin-left: -33px;">100000</span>
+<span class="coin-count" id="coin-end-balance" style="left: 217px; top: 189px; text-align: right; color: yellow; font-style: normal; font-weight: bold; position: absolute;display: inline-block; /* Faz o elemento se comportar como um bloco em linha */
+    margin-left: -33px;">500000</span>
+<button class="btn_buy_coin" style="background: none; border: 51px currentColor; border-image: none; left: 226px; top: 210px; position: absolute; cursor: pointer;" onclick="ShowPainelShopConfirm()">
+        <img src="./images/Buttons/btn_cancel_n.png">
+</button></div>
+           <div class="coin-painel-container" id="id-coin-painel" style="left: 26px; top: 241px; position: absolute;">
+<img src="./images/Forms/form-painel-coin.png">
+            <span class="coin-count" style="font-style: normal; font-weight: bold;">499</span>  
+            <div class="coin-painel-container-buttons">
+                <button class="btn_buy_coin" style="left: 408px; top: 446px; position: absolute;" onclick="BuyCoinShop(1)">
+                    <img alt="Buy Coin" src="./images/Buttons/btnBuyCoin_n.png">
+                </button> 
+                <button class="btn_buy_coin" style="left: 518px; top: 446px; position: absolute;" onclick="BuyCoinShop(1)">
+                    <img alt="Buy Coin" src="./images/Buttons/btnBuyCoin_n.png">
+                </button> 
+                <button class="btn_buy_coin" style="left: 629px; top: 446px; position: absolute;" onclick="BuyCoinShop(1)">
+                    <img alt="Buy Coin" src="./images/Buttons/btnBuyCoin_n.png">
+                </button> 
+                <button class="btn_buy_coin" style="left: 738px; top: 446px; position: absolute;" onclick="BuyCoinShop(1)">
+                    <img alt="Buy Coin" src="./images/Buttons/btnBuyCoin_n.png">
+                </button> 
+                <button class="btn_buy_coin" style="left: 851px; top: 446px; position: absolute;" onclick="BuyCoinShop(1)">
+                    <img alt="Buy Coin" src="./images/Buttons/btnBuyCoin_n.png">
+                </button> 
+            </div>
+        </div>
+        </div>
+        <div id="select-ball-painel" style="display: none;" >
+<img id="form-select-ball" style="left: 204px; top: 70px; position: absolute;  z-index: 993;" src="./images/Forms/form-select-ball.png">
+<button id="select-ball-1" style="z-index: 993;border: currentColor; border-image: none; left: 225px; top: 212px; height: 106px; display: block; position: absolute; cursor: pointer; background-color: transparent;" onclick="moveScrollBar();">
+        <img src="./images/Buttons/ball01.png">
+      </button>
+      <button id="select-ball-2" style="z-index: 993;border: currentColor; border-image: none; left: 331px; top: 214px; height: 106px; position: absolute; cursor: pointer; background-color: transparent;" onclick="moveScrollBar();">
+        <img src="./images/Buttons/ball02.png">
+      </button>
+       <button id="select-ball-3" style="z-index: 993;border: currentColor; border-image: none; left: 432px; top: 214px; height: 106px; position: absolute; cursor: pointer; background-color: transparent;" onclick="moveScrollBar();">
+        <img src="./images/Buttons/ball04.png">
+      </button> 
+      <button id="select-ball-4" style="z-index: 993;border: currentColor; border-image: none; left: 224px; top: 310px; height: 106px; position: absolute; cursor: pointer; background-color: transparent;" onclick="moveScrollBar();">
+        <img src="./images/Buttons/ball04.png">
+      </button> 
+      <button id="select-ball-5" style="z-index: 993;border: currentColor; border-image: none; left: 225px; top: 310px; height: 106px; display: block; position: absolute; cursor: pointer; background-color: transparent;" onclick="moveScrollBar();">
+        <img src="./images/Buttons/ball05.png">
+      </button>
+      <button id="select-ball-6" style="z-index: 993;border: currentColor; border-image: none; left: 331px; top: 310px; height: 106px; position: absolute; cursor: pointer; background-color: transparent;" onclick="moveScrollBar();">
+        <img src="./images/Buttons/ball06.png">
+      </button>  
+       <button id="select-ball-7" style="z-index: 993;border: currentColor; border-image: none; left: 432px; top: 310px; height: 106px; position: absolute; cursor: pointer; background-color: transparent;" onclick="moveScrollBar();">
+        <img src="./images/Buttons/ball03.png">
+      </button> 
+</div>
+      <div class="painel-items" id="painel-items">
+      <!-- Itens adicionados dinamicamente -->
+    </div>
+
+ </div>
+  <script>
+    var id = 1;
+    window.onload = function () {
+        setBG();
+        var audio = document.getElementById("sound-bgm");
+        audio.src = "./sounds/bgm.mp3";
+    };
+
+// Função para adicionar os itens ganhos no painel
+ // Função para adicionar os itens ganhos no painel
+ // Função para adicionar itens dinamicamente
+ function adicionarItens(tipo, src) {
+    var container;
+     var itemPositionX; // Posição inicial do primeiro item
+    if (tipo === 'raro') {
+        container = document.getElementById('itens-raros');
+        itemPositionX = 15; // Posição inicial do primeiro item
+    } else {
+        container = document.getElementById('itens-normais');
+        itemPositionX = 477; // Posição inicial do primeiro item
+    }
+    
+    // Limpando o conteúdo anterior
+    container.innerHTML = '';
+
+    // Lista de itens, cada um com uma imagem diferente
+    var itens = [
+        { img: src },
+        { img: './images/items/436207669.png' },
+        { img: './images/items/436207669.png' },
+        { img: './images/items/436207669.png' },
+        { img: './images/items/436207669.png' },
+        { img: './images/items/436207669.png' },
+    ];
+     
+    // Loop para adicionar os itens na tela
+    for (var i = 0; i < itens.length; i++) { // Usando o tamanho da lista de itens
+        var item = itens[i];
+        
+        // Criando uma nova div para o item
+        var itemDiv = document.createElement('div');
+        var itemImg = document.createElement('img');
+         var itemSpan = document.createElement('span');
+        itemDiv.className = 'test-item';
+        itemSpan.innerHTML = 'item name'; // Corrigido o erro de digitação aqui
+        itemImg.id = 'get-img-left';
+        itemSpan.id = 'get-item-left';
+        itemImg.src = item.img; // Definindo a imagem do item
+        itemDiv.appendChild(itemSpan); // Adicionando a imagem à div
+        itemDiv.appendChild(itemImg); // Adicionando a imagem à div
+        
+        // Ajustando a posição de cada item (incrementando o valor de 'left')
+        itemDiv.style.left = itemPositionX + 'px';
+        
+        // Adicionando o item ao contêiner
+        container.appendChild(itemDiv);
+        
+        // Atualizando a posição para o próximo item
+        itemPositionX += 95; // Incrementando 90px para o próximo item
+        if(i === 3)
+        { 
+             if (tipo === 'raro') {
+         itemPositionX = 15; // Posição inicial do primeiro item
+         
+             itemDiv.style.left = '205px';//posicao 3
+    } else {
+         itemPositionX = 477; // Posição inicial do primeiro item
+         
+             itemDiv.style.left = '667px';//posicao 3
+    }
+             itemDiv.style.top = '148px';
+        }
+        else if(i > 3)
+       { 
+           itemDiv.style.top = '148px';
+       }
+    }
+}
+ 
+    function addItemWin(id, win) {
+        const painel = document.getElementById("painel-items");
+
+        const newItem = document.createElement("div");
+        newItem.className = "item";
+
+        const img = document.createElement("img");
+        img.src = win === 1 ? './images/items/436207628.png' :
+                  win === 0 ? './images/items/436207669.png' :
+                  './images/items/134309900.png';
+        img.alt = 'Item ' + id;
+        newItem.appendChild(img);
+
+        painel.appendChild(newItem);
+
+        const itens = painel.getElementsByClassName("item");
+        if (itens.length > 7) {
+            painel.removeChild(itens[0]);
+        }
+
+        painel.scrollLeft = painel.scrollWidth;
+        adicionarItens(win === 1 ? 'raro': 'normal', img.src);
+    }
+
+    function ShowPainelShop() {
+        ShowSoundClick();
+        var shop = document.getElementById("painel-shop");
+        var selectball = document.getElementById("selectball");
+        shop.style.display = shop.style.display === "none" ? "block" : "none";
+        if (shop.style.display === "block") {
+            selectball.disabled = true;
+            selectball.style.cursor = "default";
+        } else {
+            selectball.disabled = false;
+            selectball.style.cursor = "pointer";
+        }
+    }
+
+    function ShowPainelShopConfirm() {
+        ShowSoundClick();
+        var shop = document.getElementById("painel-shop-confirm");
+        shop.style.display = shop.style.display === "none" ? "block" : "none";
+    }
+
+    function ShowSoundClick() {
+        var audio = document.getElementById("sound-click");
+        audio.src = "./sounds/Click.mp3";
+    }
+
+    function ShowSoundPlay() {
+        var audio = document.getElementById("sound-play");
+        audio.src = "./sounds/Pangya.mp3";
+    }
+
+    function setBG() {
+        var backgrounds = [
+            { image: './images/Maps/map_pink.jpg', name: "pink", probabilidade: 20 },
+            { image: './images/Maps/map_lost.jpg', name: "lost", probabilidade: 30 },
+            { image: './images/Maps/map_blue.jpg', name: "blue", probabilidade: 25 },
+            { image: './images/Maps/map_west.jpg', name: "west", probabilidade: 25 }
+        ];
+
+        var weightedArray = [];
+
+        for (var i = 0; i < backgrounds.length; i++) {
+            var bg = backgrounds[i];
+            for (var j = 0; j < bg.probabilidade; j++) {
+                weightedArray.push(bg);
+            }
+        }
+
+        var randomIndex = Math.floor(Math.random() * weightedArray.length);
+        var selectedBackground = weightedArray[randomIndex];
+
+        var main = document.getElementById("main");
+        main.style.background = "url('" + selectedBackground.image + "') no-repeat";
+        console.log("Background selecionado: " + selectedBackground.name);
+    }
+
+    function SelectBall() {
+        document.getElementById("select-ball-painel").style.display = "block";
+        document.getElementById("select-ball-1").style.display = "block";
+    }
+
+    function moveScrollBar() {
+        document.getElementById("select-ball-painel").style.display = "none";
+        document.getElementById("select-ball-1").style.display = "none";
+        var scrollBar = document.getElementById("scroll-bar");
+        var current = document.getElementById("current-bar-sub");
+        var startLeft = 107;
+        var endLeft = 496;
+        var returnLeft = 138;
+        var duration = 900;
+        var startTime = new Date().getTime();
+        var movingForward = true;
+        var sub = 1;
+
+        function animate() {
+            var currentTime = new Date().getTime();
+            var elapsedTime = currentTime - startTime;
+            var progress = Math.min(elapsedTime / duration, 1);
+
+            if (movingForward) {
+                var currentLeft = startLeft + (endLeft - startLeft) * progress;
+                scrollBar.style.left = currentLeft + "px";
+
+                // Atualizar largura de current-bar-sub para acompanhar o scrollBar
+                if(currentLeft >= 159) {
+                    var newWidth = Math.min(currentLeft - 159, 340); // Limite máximo de 340px
+                    current.style.width = newWidth + 3 + "px";
+                }
+
+                if (progress >= 1) {
+                    movingForward = false;
+                    startLeft = endLeft;
+                    endLeft = returnLeft;
+                    startTime = new Date().getTime();
+                    if (startLeft === 496) {
+                        scrollBar.style.left = startLeft + "px";
+                        document.getElementById("impact-max").style.display = "block";
+                        document.getElementById("impact").style.display = "block";
+                    }
+                }
+            } else {
+                var currentLeft = startLeft - (startLeft - returnLeft) * progress;
+                scrollBar.style.left = currentLeft + "px";
+
+                if (progress >= 1) {
+                    clearInterval(interval);
+                }
+
+                if (currentLeft === 138) {
+                    document.getElementById("impact-pangya").style.display = "block";
+                    rollToLeftComet();
+                    document.getElementById("impact-max").style.display = "none";
+                }
+            }
+        }
+
+        var interval = setInterval(animate, 16);
+    }
+
+  function GachaPlay() {
+    var lucia_move = document.getElementById("lucia-move");
+    lucia_move.src = "./images/play.gif"; // Define a animação inicial de play.gif
+    ShowSoundClick();
+
+    setTimeout(function () {
+        showPangya(); // Chama a função que mostra o "Pangya"
+    }, 1000);
+
+    setTimeout(function () {
+        lucia_move.src = "./images/play_last_frame.png"; // Define o último frame da animação
+    }, 2000);
+    
+    setTimeout(function () {
+        rollToTopComet(); // Chama a função para mover a bola para cima
+    }, 1296);
+}
+
+
+    function BuyCoinShop(id, value) {
+        ShowSoundClick();
+        ShowPainelShopConfirm();
+    }
+
+    function showPangya() {
+        ShowSoundPlay();
+        var logo = document.getElementById("pangya-logo");
+        logo.style.display = "block";
+        logo.style.animation = "riseFromGround 3s ease-in-out";
+        setTimeout(function () {
+            logo.style.display = "none";
+            logo.style.animation = "none";
+        }, 3000);
+
+        const itens = document.getElementById("painel-items").getElementsByClassName("item");
+        if (itens.length > 5) {
+            const painel = document.getElementById("painel-items");
+            painel.removeChild(itens[0]);
+        }
+
+        addItemWin(id++, Math.floor(Math.random() * 3));
+
+            
+        setTimeout(function () {
+            document.getElementById("current-bar-sub").style.width = "0px";
+            document.getElementById("scroll-bar").style.left = '107px';
+            document.getElementById("impact").style.display = "none";
+            document.getElementById("impact-pangya").style.display = "none";
+        }, 3000);
+        
+    }
+
+    function rollToLeftComet() {
+        var comet = document.getElementById('comet');
+        var angle = 0; // Ângulo inicial
+        var topPos = 340; // Posição vertical inicial
+        var leftPos = 646; // Posição horizontal inicial
+        var leftFinalPos = 380; // Posição horizontal final
+
+        var rolling = setInterval(function () {
+            angle += 10; // Incrementa o ângulo para rotação no sentido horário
+            leftPos -= 2; // Move horizontalmente para a esquerda
+
+            // Aplica a rotação
+            if (comet.style.transform !== undefined) {
+                comet.style.transform = 'rotate(' + angle + 'deg)';
+            } else if (comet.style.filter !== undefined) {
+                comet.style.filter = 'progid:DXImageTransform.Microsoft.Matrix(M11=' 
+                    + Math.cos(angle * Math.PI / 180) 
+                    + ', M12=' + (-Math.sin(angle * Math.PI / 180)) 
+                    + ', M21=' + Math.sin(angle * Math.PI / 180) 
+                    + ', M22=' + Math.cos(angle * Math.PI / 180) 
+                    + ', sizingMethod="auto expand")';
+            }
+
+            // Atualiza a posição horizontal
+            comet.style.left = leftPos + 'px';
+
+            // Para o movimento quando atingir a posição final
+            if (leftPos <= leftFinalPos) {
+                clearInterval(rolling); // Para o intervalo
+                GachaPlay();
+            }
+        }, 10); // Intervalo de 20ms
+    }
+ function rollToTopComet() {
+    var comet = document.getElementById('comet');
+    var angle = 0; // Ângulo inicial
+    var topPos = 340; // Posição vertical inicial
+    var currentSize = 30; // Tamanho inicial (em px)
+    var minSize = 10; // Tamanho mínimo para a bola (em px)
+
+    var rolling = setInterval(function () {
+        angle += 10; // Incrementa o ângulo para rotação no sentido horário
+        topPos -= 2; // Move para cima
+        currentSize -= 1; // Diminui o tamanho da bola a cada passo
+
+        // Aplica a rotação
+        if (comet.style.transform !== undefined) {
+            // Para navegadores modernos
+            comet.style.transform = 'rotate(' + angle + 'deg)';
+        } else if (comet.style.filter !== undefined) {
+            // Para IE7 e similares (usa DXImageTransform)
+            comet.style.filter = 'progid:DXImageTransform.Microsoft.Matrix(M11=' 
+                + Math.cos(angle * Math.PI / 180) 
+                + ', M12=' + (-Math.sin(angle * Math.PI / 180)) 
+                + ', M21=' + Math.sin(angle * Math.PI / 180) 
+                + ', M22=' + Math.cos(angle * Math.PI / 180) 
+                + ', sizingMethod="auto expand")';
+        }
+
+        // Atualiza a posição vertical
+        comet.style.top = topPos + 'px';
+ 
+        // Atualiza o tamanho (não diminui abaixo do tamanho mínimo)
+        if (currentSize >= minSize) {
+            comet.style.width = currentSize + 'px';
+            comet.style.height = currentSize + 'px';
+        }
+
+        // Para o movimento quando atingir a posição final
+        if (topPos <= 213) { // Verifica se atingiu a posição final
+            clearInterval(rolling); // Para o intervalo
+            
+            
+
+    setTimeout(function () {
+        // Quando o tempo passar, reinicia o estado
+            var lucia_move = document.getElementById("lucia-move");
+        lucia_move.src = "./images/play.png"; // Restaura a imagem original de play.png
+        document.getElementById("comet").style.top = "448px"; // Restaura a posição vertical da bola
+        document.getElementById("comet").style.left = "646px"; // Restaura a posição horizontal da bola
+        document.getElementById("comet").style.width = "30px"; // Restaura o tamanho da bola
+        document.getElementById("comet").style.height = "30px"; // Restaura o tamanho da bola
+        document.getElementById("comet").style.transform = "unset"; // Remove a rotação e qualquer transformação aplicada
+    }, 100); // Espera o tempo de animação e restaura a bola para o estado inicial
+        }
+    }, 50); // Intervalo de 30ms
+}
+  function ShowWinItem(tipo) {
+            ShowSoundClick();
+            switch (tipo) {
+                case 1:
+                    var pRare = document.getElementById("painel-show-win-rare");
+                    var pNormal = document.getElementById("painel-show-win-normal");
+                    var pRareImg = document.getElementById("painel-show-win-rare-img");
+                    var pNormalImg = document.getElementById("painel-show-win-normal-img");
+                    if (pRare.style.display === "none") {
+                        pNormal.style.display = "none";
+                        pNormalImg.style.display = "none";
+                        pRare.style.display = "block";
+                        pRareImg.style.display = "block";
+                    } else {
+                        pRare.style.display = "none";
+                        pRareImg.style.display = "none";
+                    }
+                    break;
+                default:
+                    var pRare = document.getElementById("painel-show-win-rare");
+                    var pNormal = document.getElementById("painel-show-win-normal");
+                    var pRareImg = document.getElementById("painel-show-win-rare-img");
+                    var pNormalImg = document.getElementById("painel-show-win-normal-img");
+                    if (pNormal.style.display === "none") {
+                        pNormal.style.display = "block";
+                        pNormalImg.style.display = "block";
+                        pRare.style.display = "none";
+                        pRareImg.style.display = "none";
+                    } else {
+                        pNormal.style.display = "none";
+                        pNormalImg.style.display = "none";
+                    }
+                    break;
+            }
+        }
+</script>
+</body>
+</html>

@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"> 
+<link rel="stylesheet" type="text/css" href="./css/banner-styles52e6.css">
+<link rel="stylesheet" type="text/css" href="./css/iconochive8307.css">
+<!-- End Wayback Rewrite JS Include -->
+<script src="https://code.jquery.com/jquery-1.8.2.min.js"></script>  
+<script type="text/javascript">
+var disable_pink=true;
+var disable_blue=true;
+    $(document).ready(function () {
+       // initializeEvent(77, success_callback, init_error);
+    });
+    
+    function success_callback() {
+        getMyPoints(setPoints, error_points);
+    }
+    
+    function setPoints(points) {
+        $('.b-points').text(points[1][0][0][1]);
+        if (points[1][0][0][1] < 1) {
+            disable_blue=true;
+        } else {
+            disable_blue=false;
+        }
+        $('.p-points').text(points[1][0][0][2]);
+        if (points[1][0][0][2] < 15) {
+            disable_pink=true;
+        } else {
+            disable_pink=false;
+        }
+        getItemRedeemStatus(setAvail, error_points);
+    }
+    
+    function init_error() {
+        openLoginLightbox();
+    }
+    function error_points() {
+        openPointErrorLightbox();
+    }
+    function setAvail(param) {
+        if (param[2][0] == "0") {
+            $("#blue-history").html("<br><p style='color: #fff799; font-size: 17px; line-height: 23px;'>Sorry,<br>Out of Stock</p>");
+        } else {
+            $("#blue-history").html("<p style='color: #69b2fc; line-height: 18px;'>SR Card Win Rate</p><p style='font-size: 20px; line-height: 28px;'>1 <span style='color: #44505e;'>/ " + param[2][2] + "</span></p><br><p style='color: #69b2fc; line-height: 18px;'>SR Card Packs Left</p><p style='font-size: 20px; line-height: 28px;'>" + param[2][0] + " <span style='color: #44505e;'>/ 10</span></p>");
+        }
+        if (param[2][1] == "0") {
+            $("#pink-history").html("<br><p style='color: #fff799; font-size: 17px; line-height: 23px;'>Sorry,<br>Out of Stock</p>");
+        } else {
+            $("#pink-history").html("<p style='color: #69b2fc; line-height: 18px;'>SC Card Win Rate</p><p style='font-size: 20px; line-height: 28px;'>1 <span style='color: #44505e;'>/ " + param[2][3] + "</span></p><br><p style='color: #69b2fc; line-height: 18px;'>SC Card Packs Left</p><p style='font-size: 20px; line-height: 28px;'>" + param[2][1] + " <span style='color: #44505e;'>/ 5</span></p>");
+        }
+    }
+</script>
+<link rel="stylesheet" href="./css/global-main-reset.css">
+<style type="text/css">
+body {background: url('./imgs/bg.jpg') top center no-repeat #071f3b !important; font-family: Lucida Sans Unicode; font-size: 13px; color: white;}
+#container {width: 980px; position: relative; margin: 0 auto;}
+#sns-icons {float: right; font-size: 13px; margin-top: 20px;}
+#sns-icons a {margin-right: 5px; float: left; color: white; text-decoration: none;}
+#sns-icons a:hover {text-decoration: underline;}
+#home-logo {position: absolute; left: 380px;}
+#home-logo a {height: 140px; width: 170px; display: block;}
+#title-subtext {width: 950px; text-align: center; margin: 0 auto; font-size: 16px; line-height: 22px;}
+#event-time {text-align: center; font-size: 14px;}
+#subtext {width: 66%; float: left; color: #466488; font-size: 12px; line-height: 17px;}
+#subtext span {color: #00b3de;}
+#blue-history {width: 125px; margin-left: 90px; float: left; height: 50px; text-align: center;}
+#pink-history {width: 125px; margin-left: 59px; float: left; height: 50px; text-align: center;}
+
+ul {list-style-type: disc;}
+.lightbox ul {color: #00b3de;}
+.points {color: #fff799; font-size: 34px; text-align: center;}
+.sidebar {width: 246px; float: left;}
+.content {float: left; width: 488px;}
+.acquire-points {font-size: 11px; text-align: right; margin-right: 30px;}
+.acquire-points a {cursor: pointer;}
+.slider-title {font-size: 16px; text-align: center;}
+.slider-title span {font-size: 11px;}
+.slider img {float: left; margin-left: 5px;}
+.slider {width: 195px; margin: 0 auto;}
+.bttn {background: url('./imgs/bttn.png') top center no-repeat; width: 161px; height: 39px; display: block; margin: 0 auto; padding-top: 15px; text-decoration: none; font-weight: bold; font-size: 20px; color: white; cursor: pointer; }
+</style>
+<script type="text/javascript">
+
+var resizeLeft = 0;
+var resizeTop = 0;
+
+function openPointErrorLightbox() {
+    $('body').prepend('<div class="lightbox" style="width: 599px; height: 344px; color: white; background: grey; border-radius: 10px; position: absolute; display: none;"><div style="position: relative; text-align: center; background: #092a4e; border-radius: 8px; margin: 10px; height: 324px;">' + 
+    '<a class="close" style="float: right; cursor: pointer; margin: 20px;"><img src="./imgs/close.png" /></a>' +
+    '<div style="clear: both;"></div><p style="font-size: 40px;">Sorry</p><br><br>' +
+    '<p>We could not find your card capsule points.<br><br>Perhaps you don\'t have any points?<br><br>Try again later.<br><br>If this problem persists, please contact support.</p><br><br><br><br>' +
+    '</div></div>');
+    $('body').prepend('<div id="jquery-overlay" style="z-index: 999; position: absolute; opacity: 0; background-color: #000;"></div>');
+
+    var arrPageSizes = ___getPageSize();
+    resizeTop = ((document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop) + ((window.innerHeight / 2) - 90);
+    resizeLeft = (arrPageSizes[0] / 2 - 275);
+    $('embed, object, select').css({ 'visibility' : 'hidden' });
+    $('#jquery-overlay').css({
+        width:              arrPageSizes[0],
+        height:             arrPageSizes[1],
+        display:            "block"
+    }).fadeIn();
+    $('.lightbox').css({
+        opacity:            0,
+        left:               resizeLeft + "px",
+        top:                resizeTop + "px",
+        "z-index":          1000,
+    }).fadeIn();
+    $('.lightbox').animate({
+        opacity: 1.0
+    }, 1000);
+    $('#jquery-overlay').animate({
+        opacity: 0.8
+    }, 500);
+    $('#jquery-overlay').click(function() {
+        _finish();
+    });
+    $('.lightbox .close').click(function() {
+        _finish();
+    });
+}
+
+function openLoginLightbox() {
+    $('body').prepend('<div class="lightbox" style="width: 599px; height: 344px; color: white; background: grey; border-radius: 10px; position: absolute; display: none;"><div style="position: relative; text-align: center; background: #092a4e; border-radius: 8px; margin: 10px; height: 324px;">' + 
+    '<a class="close" style="float: right; cursor: pointer; margin: 20px;"><img src="./imgs/close.png" /></a>' +
+    '<div style="clear: both;"></div><p style="font-size: 40px;">Sorry</p><br><br>' +
+    '<p>You must log in to a Pangya account to participate!</p><br><br><br><br>' +
+    '<a class="bttn" href="' + events.LoginPage + '">Login</a>' +
+    '</div></div>');
+    $('body').prepend('<div id="jquery-overlay" style="z-index: 999; position: absolute; opacity: 0; background-color: #000;"></div>');
+
+    var arrPageSizes = ___getPageSize();
+    resizeTop = ((document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop) + ((window.innerHeight / 2) - 90);
+    resizeLeft = (arrPageSizes[0] / 2 - 275);
+    $('embed, object, select').css({ 'visibility' : 'hidden' });
+    $('#jquery-overlay').css({
+        width:              arrPageSizes[0],
+        height:             arrPageSizes[1],
+        display:            "block"
+    }).fadeIn();
+    $('.lightbox').css({
+        opacity:            0,
+        left:               resizeLeft + "px",
+        top:                resizeTop + "px",
+        "z-index":          1000,
+    }).fadeIn();
+    $('.lightbox').animate({
+        opacity: 1.0
+    }, 1000);
+    $('#jquery-overlay').animate({
+        opacity: 0.8
+    }, 500);
+    $('#jquery-overlay').click(function() {
+        document.location= events.LoginPage;
+    });
+    $('.lightbox .close').click(function() {
+        document.location= events.LoginPage;
+    });
+}
+
+function openConfirmLightbox(point_amount, color_type) {
+    if ((color_type == "P" && disable_pink) || (color_type=="B" && disable_blue)) {
+        return;
+    }
+    $('body').prepend('<div class="lightbox" style="width: 599px; height: 344px; color: white; background: grey; border-radius: 10px; position: absolute; display: none;"><div style="position: relative; text-align: center; background: #092a4e; border-radius: 8px; margin: 10px; height: 324px;">' + 
+    '<a class="close" style="float: right; cursor: pointer; margin: 20px;"><img src="./imgs/close.png" /></a>' +
+    '<div style="clear: both;"></div><p style="font-size: 40px;">' + point_amount + ' Point Per Play</p><br><br>' +
+    '<p>Will you proceed?</p><br><br><br><br>' +
+    '<a class="bttn play" style="cursor: pointer;">OK</a>' +
+    '</div></div>');
+    $('body').prepend('<div id="jquery-overlay" style="z-index: 999; position: absolute; opacity: 0; background-color: #000;"></div>');
+
+    var arrPageSizes = ___getPageSize();
+    resizeTop = ((document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop) + ((window.innerHeight / 2) - 90);
+    resizeLeft = (arrPageSizes[0] / 2 - 275);
+    $('embed, object, select').css({ 'visibility' : 'hidden' });
+    $('#jquery-overlay').css({
+        width:              arrPageSizes[0],
+        height:             arrPageSizes[1],
+        display:            "block"
+    }).fadeIn();
+    $('.lightbox').css({
+        opacity:            0,
+        left:               resizeLeft + "px",
+        top:                resizeTop + "px",
+        "z-index":          1000,
+    }).fadeIn();
+    $('.lightbox').animate({
+        opacity: 1.0
+    }, 1000);
+    $('#jquery-overlay').animate({
+        opacity: 0.8
+    }, 500);
+    $('#jquery-overlay').click(function() {
+        _finish();
+    });
+    $('.lightbox .close').click(function() {
+        _finish();
+    });
+    $('.lightbox .play').click(function() {
+        _finish();
+        setTimeout(function() { clickPush(color_type, openRewardLightbox, openPointErrorLightbox); }, 501);
+    });
+}
+
+function openPrizesLightbox(pink) {
+    if (pink) {
+        $('body').prepend('<div class="lightbox" style="width: 799px; height: 544px; color: white; background: grey; border-radius: 10px; position: absolute; display: none;"><div style="position: relative; text-align: center; background: #480e27; border-radius: 8px; margin: 10px; height: 524px;">' + 
+        '<a class="close" style="float: right; cursor: pointer; margin: 20px;"><img src="./imgs/close.png" /></a>' +
+        '<div style="clear: both;"></div>' +
+        '<div style="margin: 0 auto; background: url(\'./imgs/pink-rewards.png\') top center no-repeat; width: 715px; height: 343px;">' + 
+        '<div style="height: 175px;"></div>' +
+        '<div style="float: left; text-align: center; width: 25%;">500 Pang Pouch</div>' +
+        '<div style="float: left; text-align: center; width: 25%;">1,000 Pang Pouch</div>' +
+        '<div style="float: left; text-align: center; width: 25%;">Silent Stabilizer</div>' +
+        '<div style="float: left; text-align: center; width: 25%;">Safe Silent</div><br>' +
+        '<div style="height: 160px;"></div>' +
+        '<div style="float: left; text-align: center; width: 25%;">Fairy\'s Tears</div>' +
+        '<div style="float: left; text-align: center; width: 25%;">Wind Strength Boost</div>' +
+        '<div style="float: left; text-align: center; width: 25%;">Auto Commander</div>' +
+        '<div style="float: left; text-align: center; width: 25%;">SC Card Pack</div>' +
+        '</div>' +
+        '</div></div>');
+    } else {
+        $('body').prepend('<div class="lightbox" style="width: 799px; height: 544px; color: white; background: grey; border-radius: 10px; position: absolute; display: none;"><div style="position: relative; text-align: center; background: #092a4e; border-radius: 8px; margin: 10px; height: 524px;">' + 
+        '<a class="close" style="float: right; cursor: pointer; margin: 20px;"><img src="./imgs/close.png" /></a>' +
+        '<div style="clear: both;"></div>' +
+        '<div style="margin: 0 auto; background: url(\'./imgs/blue-rewards.png\') top center no-repeat; width: 715px; height: 343px;">' + 
+        '<div style="height: 175px;"></div>' +
+        '<div style="float: left; text-align: center; width: 25%;">500 Pang Pouch</div>' +
+        '<div style="float: left; text-align: center; width: 25%;">1,000 Pang Pouch</div>' +
+        '<div style="float: left; text-align: center; width: 25%;">Silent Stabilizer</div>' +
+        '<div style="float: left; text-align: center; width: 25%;">Safe Silent</div><br>' +
+        '<div style="height: 160px;"></div>' +
+        '<div style="float: left; text-align: center; width: 25%;">Fairy\'s Tears</div>' +
+        '<div style="float: left; text-align: center; width: 25%;">Wind Strength Boost</div>' +
+        '<div style="float: left; text-align: center; width: 25%;">Auto Commander</div>' +
+        '<div style="float: left; text-align: center; width: 25%;">SR Card Pack</div>' +
+        '</div>' +
+        '</div></div>');
+    }
+    $('body').prepend('<div id="jquery-overlay" style="z-index: 999; position: absolute; opacity: 0; background-color: #000;"></div>');
+
+    var arrPageSizes = ___getPageSize();
+    resizeTop = ((document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop) + ((window.innerHeight / 2) - 290);
+    resizeLeft = (arrPageSizes[0] / 2 - 350);
+    $('embed, object, select').css({ 'visibility' : 'hidden' });
+    $('#jquery-overlay').css({
+        width:              arrPageSizes[0],
+        height:             arrPageSizes[1],
+        display:            "block"
+    }).fadeIn();
+    $('.lightbox').css({
+        opacity:            0,
+        left:               resizeLeft + "px",
+        top:                resizeTop + "px",
+        "z-index":          1000,
+    }).fadeIn();
+    $('.lightbox').animate({
+        opacity: 1.0
+    }, 1000);
+    $('#jquery-overlay').animate({
+        opacity: 0.8
+    }, 500);
+    $('#jquery-overlay').click(function() {
+        _finish();
+    });
+    $('.lightbox .close').click(function() {
+        _finish();
+    });
+    $('.lightbox .play').click(function() {
+    
+    });
+}
+
+function openHowPointsLightbox() {
+    $('body').prepend('<div class="lightbox" style="width: 799px; height: 544px; color: white; background: grey; border-radius: 10px; position: absolute; display: none;"><div style="position: relative; text-align: center; background: #092a4e; border-radius: 8px; margin: 10px; height: 524px;">' + 
+    '<a class="close" style="float: right; cursor: pointer; margin: 20px;"><img src="./imgs/close.png" /></a>' +
+    '<div style="clear: both;"></div><div style="text-align: left; margin-left: 15px;"><img src="./imgs/titles-points.png" alt="How to Acquire Points" /></div>' +
+    '<p style="float: left; width: 345px; margin: 20px; text-align: left;">Log on each day to receive 2 points!</p>' +
+    '<div style="float: left; width: 345px; margin: 20px; text-align: left;">1. Log in to the game and play 3 holes!<br><br>2. 1 Point will be given for every 3 Holes played.<br><br>' + 
+    '<ul style="line-height: 20px; margin-left: 20px;">' +
+        '<li>Up to 30 Points can be acquired per day.</li>' +
+        '<li>Pink Points can only be accumulated until 7/10 6:00pm PDT</li>' +
+        '<li>Pink Points can only be acquired through actual play.</li>' +
+        '<li style="list-style-type: none; color: #395779; margin-left: 15px;">ex) If you play an 18 hole game an complete 3 holes, you will receive 1 point.</li>' +
+        '<li>Points cannot be accumulated through Practice Mode, Pang Battle, and Approach Mode.</li>' +
+    '</ul></div>' +
+    '<div style="clear: both;"></div>' +
+    '<br>' +
+    '<a class="bttn play">OK</a>' +
+    '</div></div>');
+    $('body').prepend('<div id="jquery-overlay" style="z-index: 999; position: absolute; opacity: 0; background-color: #000;"></div>');
+
+    var arrPageSizes = ___getPageSize();
+    resizeTop = ((document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop) + ((window.innerHeight / 2) - 350);
+    resizeLeft = (arrPageSizes[0] / 2 - 400);
+    $('embed, object, select').css({ 'visibility' : 'hidden' });
+    $('#jquery-overlay').css({
+        width:              arrPageSizes[0],
+        height:             arrPageSizes[1],
+        display:            "block"
+    }).fadeIn();
+    $('.lightbox').css({
+        opacity:            0,
+        left:               resizeLeft + "px",
+        top:                resizeTop + "px",
+        "z-index":          1000,
+    }).fadeIn();
+    $('.lightbox').animate({
+        opacity: 1.0
+    }, 1000);
+    $('#jquery-overlay').animate({
+        opacity: 0.8
+    }, 500);
+    $('#jquery-overlay').click(function() {
+        _finish();
+    });
+    $('.lightbox .close').click(function() {
+        _finish();
+    });
+    $('.lightbox .play').click(function() {
+        _finish();
+    });
+}
+
+function openRewardLightbox(reward_params) {
+    getMyPoints(setPoints, error_points);
+    console.log(reward_params[2]);
+    
+    var mode = "SR";
+    var image_url = "";
+    var description = "";
+    var title = "";
+    
+    switch(reward_params[2][2]) {
+        case "2080374787":
+            image_url="../../../../../20161106203403/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/24.html";
+            description = "Control slot +2<br>Spin slot +1<br>Distance -2y";
+            title = "Nuri<br>(SR)";
+            break;
+        case "2080374790":
+            image_url="../../../../../20161106203412/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/18.html";
+            description = "Curve slot +3";
+            title = "Hana<br>(SR)";
+            break;
+        case "2080374794":
+            image_url="../../../../../20161106203409/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/25.html";
+            description = "Spin slot +3";
+            title = "Azer<br>(SR)";
+            break;
+        case "2080374798":
+            image_url="../../../../../20161106203405/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/29.html";
+            description = "Control slot +2<br>Power slot +1<br>Distance -2y";
+            title = "Kooh<br>(SR)";
+            break;
+        case "2080374802":
+            image_url="../../../../../20161106203410/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/20.html";
+            description = "Accuracy slot +2<br>Curve slot +1";
+            title = "Cecilia<br>(SR)";
+            break;
+        case "2080374806":
+            image_url="../../../../../20161106203401/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/15.html";
+            description = "Power slot +1<br>Accuracy slot +1";
+            title = "Max<br>(SR)";
+            break;
+        case "2080374810":
+            image_url="../../../../../20161106203402/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/22.html";
+            description = "Accuracy slot +1<br>Curve slot +2";
+            title = "Arin<br>(SR)";
+            break;
+        case "2080374814":
+            image_url="../../../../../20161106203400/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/26.html";
+            description = "Power slot +1<br>Spin slot +2";
+            title = "Kaz<br>(SR)";
+            break;
+        case "2080374830":
+            image_url="../../../../../20161106203401/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/16.html";
+            description = "Spin slot +1<br>Curve slot +2";
+            title = "Lucia<br>(SR)";
+            break;
+        case "2080374834":
+            image_url="../../../../../20161106203403/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/13.html";
+            description = "Control slot +2<br>Accuracy slot +1<br>Distance -2y";
+            title = "Nell<br>(SR)";
+            break;
+        case "2084569090":
+            image_url="../../../../../20161106203400/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/23.html";
+            description = "Success rate<br>increases (high)";
+            title = "Papel<br>(SR)";
+            break;
+        case "2084569094":
+            image_url="../../../../../20161106203359/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/12.html";
+            description = "Maximum distance<br>increases (high)";
+            title = "Pippin<br>(SR)";
+            break;
+        case "2084569102":
+            image_url="../../../../../20161106203411/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/19.html";
+            description = "Bound Bonus (high)";
+            title = "Dolfini<br>(SR)";
+            break;
+        case "2084569106":
+            image_url="../../../../../20161106203403/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/17.html";
+            description = "Powershot<br>maximum distance is<br>increased (high)";
+            title = "Lolo<br>(SR)";
+            break;
+        case "2084569110":
+            image_url="../../../../../20161106203409/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/27.html";
+            description = "Power Gauge increased<br>at pangya (high)";
+            title = "Quma<br>(SR)";
+            break;
+        case "2084569112":
+            image_url="../../../../../20161106203406/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/21.html";
+            description = "Impact zone<br>increased (low)";
+            title = "Cadie<br>(SR)";
+            break;
+        case "2084569122":
+            image_url="../../../../../20161106203404/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/10.html";
+            description = "Treasure Point increased<br>(high)";
+            title = "Tiki<br>(SR)";
+            break;
+        case "2084569123":
+            image_url="../../../../../20161106203400/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/11.html";
+            description = "Treasure Point increased<br>at Eagle";
+            title = "Sporty Pippin<br>(SR)";
+            break;
+        case "2084569131":
+            image_url="../../../../../20161106203401/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/14.html";
+            description = "Starting Gauge is<br>increased (high)";
+            title = "Mingti<br>(SR)";
+            break;
+        case "2088763426":
+            image_url="../../../../../20161106203411/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/28.html";
+            description = "EXP +25";
+            title = "Essentials<br>(SR)";
+            break;
+        case "2080374786":
+            image_url="../../../../../20161106203401/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/09.html";
+            mode="SC";
+            description = "Control slot +2<br>Spin slot +1<br>Distance -1y";
+            title = "Nuri<br>(SC)";
+            break;
+        case "2080374791":
+            image_url="../../../../../20161106203410/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/08.html";
+            mode="SC";
+            description = "Curve slot +4<br>Control slot +1";
+            title = "Hana<br>(SC)";
+            break;
+        case "2080374795":
+            image_url="../../../../../20161106203411/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/06.html";
+            mode="SC";
+            description = "Spin slot +3<br>Control slot +1";
+            title = "Azer<br>(SC)";
+            break;
+        case "2080374831":
+            image_url="../../../../../20161106203404/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/04.html";
+            mode="SC";
+            description = "Spin slot +1<br>Curve slot +3";
+            title = "Lucia<br>(SC)";
+            break;
+        case "2080374835":
+            image_url="../../../../../20161106203401/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/02.html";
+            mode="SC";
+            description = "Control slot +2<br>Accuracy slot +1<br>Distance -1y";
+            title = "Nell<br>(SC)";
+            break;
+        case "2084569095":
+            image_url="../../../../../20161106203359/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/01.html";
+            mode="SC";
+            description = "Maximum distance<br>increases (super)";
+            title = "Pippin<br>(SC)";
+            break;
+        case "2084569098":
+            image_url="../../../../../20161106203406/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/07.html";
+            mode="SC";
+            description = "Wind decreases when<br>wind is 1-5(low)<br>Wind decreases when<br>wind is 6-9(high)";
+            title = "Titan Boo<br>(SC)";
+            break;
+        case "2084569113":
+            image_url="../../../../../20161106203409/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/05.html";
+            mode="SC";
+            description = "Impact zone<br>increased (mid)";
+            title = "Cadie<br>(SC)";
+            break;
+        case "2084569132":
+            image_url="../../../../../20161106203411/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/03.html";
+            mode="SC";
+            description = "Starting Gauge is<br>increased (super)";
+            title = "Mingti<br>(SC)";
+            break;
+        case "2092957697":
+            image_url="../../../../../20161106203411/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/30.html";
+            mode="B";
+            title = "Gold Card<br>Ticket<br>";
+            break;
+        case "2092957698":
+            image_url="../../../../../20161106203401/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/32.html";
+            mode="B";
+            title = "Silver Card<br>Ticket<br>";
+            break;
+        case "2092957699":
+            image_url="../../../../../20161106203402/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/31.html";
+            mode="B";
+            title = "Bronze Card<br>Ticket<br>";
+            break;
+        case "2092957702":
+            image_url="../../../../../20161106203358/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/33.html";
+            mode="P";
+            title = "Platinum Card<br>Ticket<br>";
+            break;
+        case "436207632":
+            image_url="../../../../../20161106203404/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/34.html";
+            mode=reward_params[2][1];
+            title = "500 Pang<br>Pouch";
+            break;
+        case "436208031":
+            image_url="../../../../../20161106203402/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/39.html";
+            mode=reward_params[2][1];
+            title = "Auto Commander";
+            break;
+        case "402653231":
+            image_url="../../../../../20161106203402/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/38.html";
+            mode=reward_params[2][1];
+            title = "Wind Strength Boost";
+            break;
+        case "402653228":
+            image_url="../../../../../20161106203400/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/35.html";
+            mode=reward_params[2][1];
+            title = "Silent Nerve Stabilizer";
+            break;
+        case "402653229":
+            image_url="../../../../../20161106203400/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/36.html";
+            mode=reward_params[2][1];
+            title = "Safe Silent";
+            break;
+        case "436207926":
+            image_url="../../../../../20161106203409/http_/pangya.gamerage.com/Events/20130627_CardaponeMachine/37.html";
+            mode=reward_params[2][1];
+            title = "Fairy's Tears";
+            break;
+    }
+    
+    if (mode == "SR") {
+        $('body').prepend('<div class="lightbox" style="width: 799px; height: 644px; color: white; background: url(\'./imgs/sr-bg.png\') top center no-repeat; border-radius: 10px; position: absolute; display: none;">' + 
+        '<a class="close" style="float: right; cursor: pointer; margin: 120px 150px 0 0;"><img src="./imgs/close.png" /></a>' +
+        '<div style="clear: both;"></div><br>' +
+        '<div style="position: absolute; margin-left: 59%; color: #777; line-height: 20px; text-align: center;"><span style="color: black; font-size: 25px;">' + title + '</span><br>' + description + '</div>' +
+        '<div style="text-align: center;"><img style="margin-left: 30px;" src="./imgs/cards/' + image_url + '" /></div><br>' +
+        '<a class="close" style="width: 70px; height: 40px; display: block; margin: 0 49%; cursor: pointer;"></a>' +
+        '</div>');
+    } else if (mode == "SC") {
+        $('body').prepend('<div class="lightbox" style="width: 799px; height: 644px; color: white; background: url(\'./imgs/sc-bg.png\') top center no-repeat; border-radius: 10px; position: absolute; display: none;">' + 
+        '<a class="close" style="float: right; cursor: pointer; margin: 120px 150px 0 0;"><img src="./imgs/close.png" /></a>' +
+        '<div style="clear: both;"></div><br>' +
+        '<div style="position: absolute; margin-left: 59%; color: #777; line-height: 20px; text-align: center;"><span style="color: black; font-size: 25px;">' + title + '</span><br>' + description + '</div>' +
+        '<div style="text-align: center;"><img style="margin-left: 30px;" src="./imgs/cards/' + image_url + '" /></div><br>' +
+        '<a class="close" style="width: 70px; height: 40px; display: block; margin: 0 49%; cursor: pointer;"></a>' +
+        '</div>');
+    } else if (mode == "B") {
+        $('body').prepend('<div class="lightbox" style="width: 799px; height: 644px; color: white; background: url(\'./imgs/blue-bg.png\') top center no-repeat; border-radius: 10px; position: absolute; display: none;">' + 
+        '<a class="close" style="float: right; cursor: pointer; margin: 120px 150px 0 0;"><img src="./imgs/close.png" /></a>' +
+        '<div style="clear: both;"></div>' + 
+        '<p style="font-size: 24px; color: #056ccc; text-align: center; margin-left: 30px;">' + title + '</p>' +
+        '<br>' +
+        '<div style="text-align: center;"><img style="margin-left: 30px;" src="./imgs/cards/' + image_url + '" /></div><br>' +
+        '<a class="close" style="width: 70px; height: 40px; display: block; margin: 0 49%; cursor: pointer;"></a>' +
+        '</div>');
+    } else if (mode == "P") {
+        $('body').prepend('<div class="lightbox" style="width: 799px; height: 644px; color: white; background: url(\'./imgs/pink-bg.png\') top center no-repeat; border-radius: 10px; position: absolute; display: none;">' + 
+        '<a class="close" style="float: right; cursor: pointer; margin: 120px 150px 0 0;"><img src="./imgs/close.png" /></a>' +
+        '<div style="clear: both;"></div>' +
+        '<p style="font-size: 24px; color: #ca2084; text-align: center; margin-left: 30px;">' + title + '</p>' +
+        '<br>' +
+        '<div style="text-align: center;"><img style="margin-left: 30px;" src="./imgs/cards/' + image_url + '" /></div><br>' +
+        '<a class="close" style="width: 70px; height: 40px; display: block; margin: 0 49%; cursor: pointer;"></a>' +
+        '</div>');
+    }
+    $('body').prepend('<div id="jquery-overlay" style="z-index: 999; position: absolute; opacity: 0; background-color: #000;"></div>');
+
+    var arrPageSizes = ___getPageSize();
+    resizeTop = ((document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop) + ((window.innerHeight / 2) - 240);
+    resizeLeft = (arrPageSizes[0] / 2 - 400);
+    $('embed, object, select').css({ 'visibility' : 'hidden' });
+    $('#jquery-overlay').css({
+        width:              arrPageSizes[0],
+        height:             arrPageSizes[1],
+        display:            "block"
+    }).fadeIn();
+    $('.lightbox').css({
+        opacity:            0,
+        left:               resizeLeft + "px",
+        top:                resizeTop + "px",
+        "z-index":          1000,
+    }).fadeIn();
+    $('.lightbox').animate({
+        opacity: 1.0
+    }, 1000);
+    $('#jquery-overlay').animate({
+        opacity: 0.8
+    }, 500);
+    $('#jquery-overlay').click(function() {
+        _finish();
+    });
+    $('.lightbox .close').click(function() {
+        _finish();
+    });
+}
+
+$(window).resize(function() {
+    // Get page sizes
+    var arrPageSizes = ___getPageSize();
+    // Style overlay and show it
+    $('#jquery-overlay').css({
+        width:      arrPageSizes[0],
+        height:     arrPageSizes[1]
+    });
+    $('.lightbox').css({
+        left:       resizeLeft,
+        top:        resizeTop
+    });
+});
+function _finish() {
+    $('.lightbox').animate({
+        opacity: 0
+    }, 500);
+    $('#jquery-overlay').animate({
+        opacity: 0
+    }, 500, function() { $('#jquery-overlay').remove(); $('.lightbox').remove();});
+    // Show some elements to avoid conflict with overlay in IE. These elements appear above the overlay.
+    $('embed, object, select').css({ 'visibility' : 'visible' });
+}
+
+function ___getPageSize() {
+    var xScroll, yScroll;
+    if (window.innerHeight && window.scrollMaxY) {
+        xScroll = window.innerWidth + window.scrollMaxX;
+        yScroll = window.innerHeight + window.scrollMaxY;
+    } else if (document.body.scrollHeight > document.body.offsetHeight){ // all but Explorer Mac
+        xScroll = document.body.scrollWidth;
+        yScroll = document.body.scrollHeight;
+    } else { // Explorer Mac...would also work in Explorer 6 Strict, Mozilla and Safari
+        xScroll = document.body.offsetWidth;
+        yScroll = document.body.offsetHeight;
+    }
+    var windowWidth, windowHeight;
+    if (self.innerHeight) { // all except Explorer
+        if(document.documentElement.clientWidth){
+            windowWidth = document.documentElement.clientWidth; 
+        } else {
+            windowWidth = self.innerWidth;
+        }
+        windowHeight = self.innerHeight;
+    } else if (document.documentElement && document.documentElement.clientHeight) { // Explorer 6 Strict Mode
+        windowWidth = document.documentElement.clientWidth;
+        windowHeight = document.documentElement.clientHeight;
+    } else if (document.body) { // other Explorers
+        windowWidth = document.body.clientWidth;
+        windowHeight = document.body.clientHeight;
+    }
+    // for small pages with total height less then height of the viewport
+    if(yScroll < windowHeight){
+        pageHeight = windowHeight;
+    } else { 
+        pageHeight = yScroll;
+    }
+    // for small pages with total width less then width of the viewport
+    if(xScroll < windowWidth){
+        pageWidth = xScroll;
+    } else {
+        pageWidth = windowWidth;
+    }
+    arrayPageSize = new Array(pageWidth,pageHeight,windowWidth,windowHeight);
+    return arrayPageSize;
+}
+</script>
+</head>
+<body> 
+<div id="container">  
+<div style="height: 170px; clear: both; margin-top: 100px;"></div>
+<p id="title-subtext">Things are heating up outside and so are things on Pangya Island! To celebrate the heat, try your luck on the Card Capsule Machine! Depending on the side you choose, you'll have a chance to win a SR or SC Card!</p>
+<div style="height: 35px;"></div>
+<p id="event-time">Points can be accumulated from 6/27 ~ 7/10 6:00PM PDT</p>
+
+<div style="height: 150px;"></div>
+<div class="sidebar">
+    <p class="points b-points">0</p><br><br>
+    <p class="acquire-points"><a onclick="openHowPointsLightbox()">How to Acquire Points?</a></p><br><br>
+    <p class="slider-title">SR (Super Rare) Card Pack<br><span>(1 will be Randomly Rewarded)</span></p><br><br><br>
+    
+    
+    <script type="text/javascript">
+    function next(color_ty) {
+        if (color_ty == 1) {
+            if ($('#slider2 div').css("background-position") != "-276px 0px") {
+                var bgPos = $('#slider2 div').css("background-position").split(' ')[0];
+                $('#slider2 div').css("background-position", (parseInt(bgPos,10) - 138) + "px 0px");
+                $('.s2-prev').css("visibility", "");
+            }
+            if ($('#slider2 div').css("background-position") == "-276px 0px") {
+                $('.s2-next').css("visibility", "hidden");
+            }
+        } else {
+            if ($('#slider1 div').css("background-position") != "-828px 0px") {
+                var bgPos = $('#slider1 div').css("background-position").split(' ')[0];
+                $('#slider1 div').css("background-position", (parseInt(bgPos,10) - 138) + "px 0px");
+                $('.s1-prev').css("visibility", "");
+            }
+            if ($('#slider1 div').css("background-position") == "-828px 0px") {
+                $('.s1-next').css("visibility", "hidden");
+            }
+        }
+    }
+    function prev(color_ty) {
+        if (color_ty == 1) {
+            if ($('#slider2 div').css("background-position") != "0px 0px") {
+                var bgPos = $('#slider2 div').css("background-position").split(' ')[0];
+                $('#slider2 div').css("background-position", (parseInt(bgPos,10) + 138) + "px 0px");
+                $('.s2-next').css("visibility", "");
+            }
+            if ($('#slider2 div').css("background-position") == "0px 0px") {
+                $('.s2-prev').css("visibility", "hidden");
+            }
+        } else {
+            if ($('#slider1 div').css("background-position") != "0px 0px") {
+                var bgPos = $('#slider1 div').css("background-position").split(' ')[0];
+                $('#slider1 div').css("background-position", (parseInt(bgPos,10) + 138) + "px 0px");
+                $('.s1-next').css("visibility", "");
+            }
+            if ($('#slider1 div').css("background-position") == "0px 0px") {
+                $('.s1-prev').css("visibility", "hidden");
+            }
+        }
+    }
+    </script>
+    
+    <div id="slider1" class="slider">
+    <a class="s1-prev" style="cursor: pointer; visibility: hidden;" onclick="prev(0)"><img style="padding: 21px 5px;" src="./imgs/left-arrow.png" alt="Left Arrow"></a>
+    <div style="width: 135px; background: url(&#39;./imgs/sr-slider.png&#39;) 0px 0px no-repeat; height: 60px; float: left;"></div>
+    <a class="s1-next" style="cursor: pointer;" onclick="next(0)"><img style="padding: 21px 0;" src="./imgs/right-arrow.png" alt="Right Arrow"></a>
+    </div>
+</div>
+
+<div class="content">
+<div style="height: 40px;"></div>
+<div style="height: 190px;">
+    <div id="blue-history"></div>
+    <div id="pink-history"></div>
+</div>
+<div style="height: 115px;">
+    <a style="width: 120px; margin-left: 110px; cursor: pointer; float: left; height: 120px; display: block;" onclick="openConfirmLightbox(1, &#39;B&#39;)"></a>
+    <a style="width: 120px; margin-left: 30px; cursor: pointer; float: left; height: 120px; display: block;" onclick="openConfirmLightbox(15, &#39;P&#39;)"></a>
+</div><br>
+<div style="height: 26px;">
+    <a style="width: 100px; margin-left: 118px; float: left; height: 26px; display: block; cursor: pointer;" onclick="openPrizesLightbox(false)"></a>
+    <a style="width: 100px; margin-left: 49px; float: left; height: 26px; display: block; cursor: pointer;" onclick="openPrizesLightbox(true)"></a>
+</div>
+</div>
+
+<div class="sidebar">
+    <p class="points p-points">0</p><br><br>
+    <p class="acquire-points"><a onclick="openHowPointsLightbox()">How to Acquire Points?</a></p><br><br>
+    <p class="slider-title">SC (Secret) Card Pack<br><span>(1 will be Randomly Rewarded)</span></p><br><br><br>
+    
+    <div id="slider2" class="slider">
+    <a class="s2-prev" style="cursor: pointer; visibility: hidden;" onclick="prev(1)"><img style="padding: 21px 5px;" src="./imgs/left-arrow-pink.png" alt="Left Arrow"></a>
+    <div style="width: 135px; background: url(&#39;./imgs/sc-slider.png') 0px 0px no-repeat; height: 60px; float: left;"></div>
+    <a class="s2-next" style="cursor: pointer;" onclick="next(1)"><img style="padding: 21px 0;" src="./imgs/right-arrow-pink.png" alt="Right Arrow"></a>
+    </div>
+</div>
+
+<div style="clear: both;"></div>
+<div style="height: 220px;"></div>
+
+<div style="float: left; width: 50%;"><div style="margin: 0 auto; width: 445px; height: 63px; padding-top: 170px; background: url('./imgs/blue.png') top center no-repeat;">
+    <div style="float: left; width: 33%; text-align: center; line-height: 14px; font-size: 11px;">Bronze Card<br>Ticket (1)</div>
+    <div style="float: left; width: 33%; text-align: center; line-height: 14px; font-size: 11px;">Silver Card<br>Ticket (1)</div>
+    <div style="float: left; width: 33%; text-align: center; line-height: 14px; font-size: 11px;">Gold Card<br>Ticket (1)</div>
+</div></div>
+
+<div style="float: left; width: 50%;"><div style="margin: 0 auto; width: 445px; height: 63px; padding-top: 170px; background: url('./imgs/pink.png') top center no-repeat; text-align: center; line-height: 14px; font-size: 11px;">Platinum Card<br>Ticket (1)
+</div></div> 
+<div style="clear: both;"></div>
+<br>
+</div>
+</body>
+</html>

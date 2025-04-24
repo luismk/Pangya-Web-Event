@@ -1,0 +1,116 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 200%;
+    width: 200%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #ffffff;
+}
+
+.background-container {
+    position: absolute;
+    top: 50px;
+    right: 360px;
+    height: 100%;
+    width: 100%;
+    color: #ffffff; 
+   
+}
+
+.background-container img {
+    position: absolute;
+}
+
+.container {
+ position: relative;
+    z-index: 1; /* Coloca o contêiner na frente das imagens de fundo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 800px; 
+    height: 553px; 
+    border: 0;  
+}  
+
+.details button {
+    position: absolute;
+    top: -104px;
+    left: 100px;
+    background-image: url(../Imagens/missiontevent_ex_n.png);
+    background-size: cover;
+    width: 121px; /* Largura do botão */
+    height: 35px; /* Altura do botão */
+    background-repeat: no-repeat;
+    background-color: transparent; 
+    border: none; /* Remove a borda padrão */
+    outline: none; /* Remove o contorno do foco */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    transition: background-image 0.3s; /* Animação suave na mudança da imagem */
+}
+
+.details button:hover {
+    background-image: url(../Imagens/missiontevent_ex_o.png); /* Imagem quando pressionado */
+}
+
+.mission-mark img {
+    position: absolute;
+    top: -100px;
+    left: -735px;
+    width: 94px;
+    height: 54px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    transition: background-image 0.3s;
+}  
+
+.mission-info img {
+    position: absolute;
+    top: -100px;
+    left: -735px;
+    width: 158px;
+    height: 141px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    transition: background-image 0.3s;
+    display: none;
+}  
+
+.mission-info span {
+     position: absolute;
+    z-index: 2;
+    top: -5px;
+    left: 154px;
+    display: none;
+    font-size: 12.5px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.mission-info img:hover {
+    display: block;
+}  
+
+.mission-confirm button {
+    position: absolute; 
+    background-image: url(../Imagens/missiontevent_btn_ok_n.png);
+    background-size: cover;
+    width: 82px; /* Largura do botão */
+    height: 65px; /* Altura do botão */
+    background-repeat: no-repeat;
+    background-color: transparent; 
+    border: none; /* Remove a borda padrão */
+    outline: none; /* Remove o contorno do foco */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    transition: background-image 0.3s; /* Animação suave na mudança da imagem */
+}
+
+.mission-confirm button:hover {
+    background-image: url(../Imagens/missiontevent_btn_ok_o.png); /* Imagem quando pressionado */
+}

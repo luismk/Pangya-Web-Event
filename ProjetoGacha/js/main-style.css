@@ -1,0 +1,167 @@
+body {
+            margin: 0;
+            padding: 0;
+            background: url('../images/loading.png') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        } 
+        
+         .loading {
+             z-index: 8888;
+             position: absolute;
+        }
+        
+        .loading img {
+           top: 242px;
+           position: absolute;
+           left: 98px;
+        }
+        
+        .container {
+            text-align: center;
+            width: 800px;
+            height: 553px;
+        }
+
+        .help-container {
+            text-align: center;
+            display: none;
+        }
+
+        .buttons {
+            position: absolute;
+            top: 223px;
+            left: 84px;
+        }
+
+        .buttons button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .buttons button:hover {
+            transform: scale(1.05);
+        }
+
+        .buttons .btn_help:hover img {
+            content: url('../images/Buttons/btnEnter_o.png');
+        }
+
+        .buttons .btn_play:hover img {
+            content: url('../images/Buttons/btnPlay_o.png');
+        }
+
+        .coin-painel-container {
+            
+            text-align: center;
+            color: #333;
+        }
+
+        .coin-painel-container span {
+            top: 15px;
+            position: absolute;
+            left: 547px;
+            font-size: 22px;
+        }
+
+        .coin-painel-container-buttons {
+            position: absolute;
+             top: -319px;
+             left: -372px;
+        }
+
+        .coin-painel-container button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .coin-painel-container button:hover {
+            transform: scale(1.05);
+        }
+
+        .coin-painel-container .btn_buy_coin:hover img {
+            content: url('../images/Buttons/btnBuyCoin_o.png');
+        }
+
+        .painel-shop {
+            left: 212px;
+            top: 165px;
+            position: absolute;
+            z-index: 9999;
+            display: none;
+        }
+
+        .painel-shop-point-current {
+            left: 217px;
+            top: 147px;
+            text-align: left;
+            color: white;
+            font-style: normal;
+            font-weight: bold;
+            position: absolute;
+            display: inline-block;
+            margin-left: -33px;
+            margin-right: -19px;
+        }
+
+        .painel-shop-point-cost {
+            left: 217px;
+            top: 168px;
+            text-align: right;
+            color: white;
+            font-style: normal;
+            font-weight: bold;
+            position: absolute;
+            display: inline-block;
+            margin-left: -33px;
+        }
+
+        .painel-shop-point-end {
+            left: 217px;
+            top: 189px;
+            text-align: right;
+            color: yellow;
+            font-style: normal;
+            font-weight: bold;
+            position: absolute;
+            display: inline-block;
+            margin-left: -33px;
+        }
+
+        .painel-shop-base {
+            z-index: 9999;
+        }
+
+        /* Estilo para o evento */
+        .event-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+        }
+
+        .event-content {
+            background: white;
+            padding: 20px;
+            max-width: 90%;
+            max-height: 90%;
+            text-align: center;
+            overflow: auto;
+        }
+
+        .event-content img {
+            max-width: 100%;
+            object-fit: contain;
+            overflow: auto;
+        }
