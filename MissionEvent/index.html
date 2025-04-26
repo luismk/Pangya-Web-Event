@@ -18,27 +18,40 @@
         </div>
         <div class="container">
             <div class="details">
-                <button></button> 
+			<button style="transform: scale(1);" onclick="showEvent(event)"></button> 
             </div>
-			 <div class="mission-confirm">
-             <button style="left: 106px; top: -55px;" onclick="alert('Ganhou um item!')"></button>
-             <button style="left: 106px; top: 156px;" onclick="alert('Ganhou outro item!')"></button>
+			<div class="mission-confirm" style="left: 411px; top: 303px; position: fixed;">
+             <button style="left: 95px; top: -77px;" onclick="alert('Ganhou um item!')"></button>
+             <button style="left: 95px; top: 128px;" onclick="alert('Ganhou outro item!')"></button>
             </div>
-		<div class="mission-mark">
-                <img id="versus3" style="left: -167px; top: -51px; display: block;" src="./Imagens/missionevent_clear_mark.png"> 
-                <img id="tourney2" style="left: -32px; top: -51px; display: block;" src="./Imagens/missionevent_clear_mark.png"> 
-                <img id="versus30" style="left: -167px; top: 68px; display: block;" src="./Imagens/missionevent_clear_mark.png"> 
-                <img id="newrecord" style="left: -33px; top: 68px; display: block;" src="./Imagens/missionevent_clear_mark.png"> 
-                <img id="putt" style="left: -167px; top: 158px; display: block;" src="./Imagens/missionevent_clear_mark.png"> 
-                <img id="eagles" style="left: -33px; top: 158px; display: block;" src="./Imagens/missionevent_clear_mark.png"> 
-                <img id="allcourses" style="left: 102px; top: 68px; display: block;" src="./Imagens/missionevent_clear_mark.png"> 
+		 <div class="mission-mark" style="">
+                <img id="versus3" style="left: -167px; top: -134px; display: none;" src="./Imagens/missionevent_clear_mark.png"> 
+				<img id="tourney2" style="left: -32px; top: -134px; display: none;" src="./Imagens/missionevent_clear_mark.png"> 
+                <img id="versus30" style="left: -167px; top: -12px; display: none;" src="./Imagens/missionevent_clear_mark.png"> 
+                <img id="newrecord" style="left: -33px; top: -8px; display: none;" src="./Imagens/missionevent_clear_mark.png"> 
+                <img id="putt" style="left: -167px; top: 73px; display: none;" src="./Imagens/missionevent_clear_mark.png"> 
+                <img id="eagles" style="left: -26px; top: 68px; display: none;" src="./Imagens/missionevent_clear_mark.png"> 
+                <img id="allcourses" style="left: 102px; top: -12px; display: none;" src="./Imagens/missionevent_clear_mark.png"> 
             </div>
-			<div class="mission-info">
-                <img id="missionCourse"style="top: -4px;left: 90px;"src="./Imagens/course_bg1.png" > 
-                <img id="missionInfo"style="z-index: 10;width: 130px; height: 94px;top: 28px;left: 96px;"src="./Imagens/course_bg_c1.png" > 
-                <span id="missionCompleted" style="z-index: 10;">20</span>
+			 <div class="mission-mark-count" style="left: 398px; top: 276px; position: fixed;">
+                <span id="versus-count" style="left: -132px; color: papayawhip; font-family: arial black; font-size: 13px; font-style: italic; position: absolute;">2
+</span><span id="tourney-count" style="color: papayawhip; font-family: arial black; font-size: 12px; font-style: italic; position: absolute;">2
+</span><span id="versus-count30" style="left: -139px; top: 122px; color: papayawhip; font-family: arial black; font-size: 13px; font-style: italic; position: absolute;">30
+</span><span id="eagle-count" style="left: 7px; top: 204px; color: papayawhip; font-family: arial black; font-size: 13px; font-style: italic; position: absolute;">2
+</span>
+					 </div>
+					 <div class="mission-info">
+                <img id="missionCourse" style="left: 90px; top: -4px; display: none;" src="./Imagens/course_bg1.png"> 
+                <img id="missionInfo" style="left: 96px; top: 28px; width: 130px; height: 94px; display: none; z-index: 10;" src="./Imagens/course_bg_c1.png"> 
+                <span id="missionCompleted" style="display: none; z-index: 10;">20</span>
 			</div>
         </div> 
+		<!-- Contêiner para o evento -->
+        <div class="event-container" id="eventContainer" onclick="containerClick(event)">
+            <div class="event-content" onclick="eventContentClick(event)">
+                <img src="./Imagens/missionevent_explanation.jpg"  style="transform: scale(1);" alt="Event Image">
+            </div>
+        </div>
 	 <script>
         let isMissionInfoVisible = false; // Flag para controlar a visibilidade
 
@@ -73,10 +86,33 @@
                 missionInfo.style.display = 'none'; // Esconde a imagem
                 missionCompleted.style.display = 'none'; // Esconde a imagem
 				  
-                isMissionInfoVisible = false; // Atualiza a flag
-            console.log('Mouse 2');
+                isMissionInfoVisible = false; // Atualiza a flag 
             }
         });
+		function showEvent() {
+     document.getElementById("eventContainer").style.display = "flex";
+}
+
+function closeEvent() {
+    
+    document.getElementById("eventContainer").style.display = "none";
+}
+
+// Evitar que o clique dentro do conteúdo do evento feche o evento
+function eventContentClick(event) {
+    event.cancelBubble = true;
+}
+
+function containerClick(event) {
+    event = event || window.event;
+    var target = event.srcElement || event.target;
+
+    var eventContent = document.getElementsByClassName('event-content')[0];
+    
+    if (!eventContent.contains(target)) {
+        closeEvent();
+    }
+}
     </script>
 </body>
 </html>

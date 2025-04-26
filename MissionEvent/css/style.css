@@ -35,37 +35,41 @@ body, html {
     height: 553px; 
     border: 0;  
 }  
-
+  
 .details button {
     position: absolute;
-    top: -104px;
-    left: 100px;
+    top: -197px;
+    left: 95px;
     background-image: url(../Imagens/missiontevent_ex_n.png);
     background-size: cover;
-    width: 121px; /* Largura do botão */
-    height: 35px; /* Altura do botão */
+    width: 121px;
+    height: 35px;
     background-repeat: no-repeat;
-    background-color: transparent; 
-    border: none; /* Remove a borda padrão */
-    outline: none; /* Remove o contorno do foco */
-    cursor: pointer; /* Muda o cursor para indicar que é clicável */
-    transition: background-image 0.3s; /* Animação suave na mudança da imagem */
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: background-image 0.3s;
 }
+
 
 .details button:hover {
     background-image: url(../Imagens/missiontevent_ex_o.png); /* Imagem quando pressionado */
 }
 
 .mission-mark img {
-    position: absolute;
-    top: -100px;
-    left: -735px;
+     left: 393px; top: 357px; position: fixed;
     width: 94px;
     height: 54px;
     background-color: transparent;
     border: none;
     outline: none;
     transition: background-image 0.3s;
+}  
+
+
+.mission-mark-count {
+    left: 398px; top: 276px; position: fixed;
 }  
 
 .mission-info img {
@@ -114,3 +118,34 @@ body, html {
 .mission-confirm button:hover {
     background-image: url(../Imagens/missiontevent_btn_ok_o.png); /* Imagem quando pressionado */
 }
+
+
+        /* Estilo para o evento */
+        .event-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+        }
+
+        .event-content {
+            background: white;
+            padding: 20px;
+            max-width: 90%;
+            max-height: 90%;
+            text-align: center;
+            overflow: auto;
+        }
+
+        .event-content img {
+            max-width: 100%;
+            object-fit: contain;
+            overflow: auto;
+        }
